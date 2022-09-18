@@ -1,0 +1,25 @@
+{
+    "command": [
+        "echo",
+        "test"
+    ],
+    "image": "busybox",
+    "fargatePlatformConfiguration": {
+        "platformVersion": "1.4.0"
+    },
+    "networkConfiguration": {
+        "assignPublicIp": "ENABLED"
+    },
+    "resourceRequirements": [
+        {
+            "type": "VCPU",
+            "value": "0.25"
+        },
+        {
+            "type": "MEMORY",
+            "value": "512"
+        }
+    ],
+    "executionRoleArn": "${execution_role_arn}",
+    "jobRoleArn": "${job_role_arn}"
+}

@@ -1,0 +1,40 @@
+{
+    "Comment": "batch-system-state-machine",
+    "StartAt": "first_job",
+    "States": {
+        "first_job": {
+            "Type": "Task",
+            "Resource": "arn:aws:states:::batch:submitJob.sync",
+            "Parameters": {
+                "JobName": "first_job",
+                "JobDefinition": "${job_definition_arn}",
+                "JobQueue": "${job_queue_arn}",
+                "ContainerOverrides": {
+                    "Command": [
+                        "echo",
+                        "first",
+                        "job"
+                    ]
+                }
+            },
+            "Next": "second_job"
+        },
+        "second_job": {
+            "Type": "Task",
+            "Resource": "arn:aws:states:::batch:submitJob.sync",
+            "Parameters": {
+                "JobName": "second_job",
+                "JobDefinition": "${job_definition_arn}",
+                "JobQueue": "${job_queue_arn}",
+                "ContainerOverrides": {
+                    "Command": [
+                        "echo",
+                        "second",
+                        "job"
+                    ]
+                }
+            },
+            "End": true
+        }
+    }
+}
