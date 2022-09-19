@@ -33,7 +33,7 @@ resource "aws_iam_role_policy_attachment" "aws_eventbridge_role" {
 resource "aws_cloudwatch_event_rule" "daily_batch" {
   is_enabled          = false
   name                = "${var.system}-daily-invorking"
-  schedule_expression = "cron(0 23 * * ? *)"
+  schedule_expression = var.batch_schedule_expression
   tags = {
     Name = "${var.system}-daily-invorking"
   }

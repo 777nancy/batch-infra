@@ -24,3 +24,9 @@ variable "public_subnet" {
     "availability_zone" = "us-west-2a"
   }
 }
+
+variable "batch_schedule_expression" {
+  description = "cron"
+  type        = string
+  default     = "cron(0 23 * * ? *)"
+}

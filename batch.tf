@@ -41,7 +41,7 @@ resource "aws_batch_compute_environment" "batch_compute_env" {
   type         = "MANAGED"
   tags = {
     Name = "${var.system}-compute-env"
-}
+  }
   depends_on = [
     aws_security_group.sg,
     aws_subnet.public_subnet,
@@ -54,9 +54,9 @@ resource "aws_batch_job_queue" "batch_job_queue" {
   state                = "ENABLED"
   priority             = 1
   compute_environments = [aws_batch_compute_environment.batch_compute_env.arn]
-    tags = {
+  tags = {
     Name = "${var.system}-job-queue"
-}
+  }
   depends_on = [
     aws_batch_compute_environment.batch_compute_env
   ]
@@ -124,8 +124,8 @@ resource "aws_batch_job_definition" "busybox_job_definition" {
   tags = {
     "Name" = "${var.system}-busy-box-job-definition"
   }
-depends_on = [
-  aws_iam_role.aws_batch_execution_role,
-  aws_iam_role.aws_batch_job_role
-]
+  depends_on = [
+    aws_iam_role.aws_batch_execution_role,
+    aws_iam_role.aws_batch_job_role
+  ]
 }
