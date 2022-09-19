@@ -1,5 +1,5 @@
 resource "aws_vpc" "batch_infra_vpc" {
-  cidr_block = var.cider
+  cidr_block = var.cidr
   tags = {
     "Name" = "${var.system}-vpc"
   }

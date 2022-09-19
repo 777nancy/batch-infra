@@ -10,8 +10,8 @@ variable "system" {
   default     = "batch-system"
 }
 
-variable "cider" {
-  description = "cider"
+variable "cidr" {
+  description = "cidr"
   type        = string
   default     = "10.0.0.0/16"
 }
